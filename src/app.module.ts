@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
-import { TransacaoHttp } from './controller/http/transacao/transacaoHttp';
+import { TransacaoHttp } from './infra/http/controller/transacao/transacaoHttp';
+import { ArmazenarTransacoes } from './infra/memory/armazenarTransacoes';
 
 @Module({
   imports: [],
   controllers: [TransacaoHttp],
-  providers: [],
+  providers: [ArmazenarTransacoes],
 })
 export class AppModule {}
