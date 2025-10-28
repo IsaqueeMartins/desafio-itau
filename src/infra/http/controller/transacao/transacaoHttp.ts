@@ -6,9 +6,9 @@ export class TransacaoHttp {
   constructor(private readonly transacoes: ArmazenarTransacoes) {}
   @Post()
   criaTransacao(@Body() transacaoHttpDto: TransacaoHttpDto) {
-    const transacoesArr: TransacaoHttpDto[] = [];
-    transacoesArr.push(transacaoHttpDto);
-    this.transacoes.set('Transacoes', transacoesArr);
-    return this.transacoes.get('Transacoes');
+    const transacoesExistentes = this.transacoes.get('Transacoes') ?? [];
+    transacoesExistentes.push(transacaoHttpDto);
+    this.transacoes.set('Transacoes', transacoesExistentes);
+    return transacaoHttpDto;
   }
 }

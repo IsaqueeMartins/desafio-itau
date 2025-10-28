@@ -9,8 +9,8 @@ export class ArmazenarTransacoes {
     this.transacoes.set(key, value);
   }
 
-  get(key: string): void {
-    this.transacoes.get(key);
+  get(key: string): ITransacao[] | undefined {
+    return this.transacoes.get(key);
   }
 
   clear(): void {
